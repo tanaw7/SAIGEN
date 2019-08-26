@@ -1,0 +1,85 @@
+buildscript {
+    ext.kotlin_version = '1.2.61'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+group 'test'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'kotlin'
+
+repositories {
+	mavenLocal()
+    mavenCentral()
+	//maven {url = "https://soot-build.cs.uni-paderborn.de/nexus/repository/soot-snapshot/"}
+	//maven {url = "https://soot-build.cs.uni-paderborn.de/nexus/repository/soot-release/"}
+	maven { url = 'https://jitpack.io' }
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    compile 'edu.stanford.nlp:stanford-corenlp:3.9.1'
+    compile 'edu.stanford.nlp:stanford-parser:3.9.1'
+    compile 'com.hypertino:inflector_2.12:1.0.10'
+
+    compile 'org.droidmate:droidmate-2:1.2-SNAPSHOT'
+    compile 'saarland.cispa:link:0.1-SNAPSHOT'
+
+    //compile group: 'com.google.guava', name: 'guava', version: '26.0-jre'
+
+    compile 'org.apache.commons:commons-exec:1.2'
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'commons-io:commons-io:2.6'
+
+
+    // https://mvnrepository.com/artifact/edu.washington.cs.knowitall/morpha-stemmer
+    compile 'edu.washington.cs.knowitall:morpha-stemmer:1.0.5'
+
+
+    // https://mvnrepository.com/artifact/xerces/xercesImpl
+    //compile group: 'xerces', name: 'xercesImpl', version: '2.8.0'
+    //compile group: 'xml-apis', name: 'xml-apis', version: '1.4.01'
+    // https://mvnrepository.com/artifact/xerces/xerces
+    compile group: 'xerces', name: 'xerces', version: '1.4.0'
+    // https://mvnrepository.com/artifact/org.apache.jena/jena-arq
+    //compile group: 'org.apache.jena', name: 'jena-arq', version: '2.9.3'
+
+
+/*
+    //from Link
+    compile 'org.slf4j:slf4j-api:1.7.25'
+    compile 'ch.qos.logback:logback-classic:1.2.3'
+    compile 'ch.qos.logback:logback-core:1.2.3'
+    //compile group: 'com.hp.hpl.jena', name: 'jena', version: '2.6.4'
+
+    compile group: 'org.apache.jena', name: 'jena', version: '3.7.0', ext: 'pom'
+    compile group: 'org.apache.jena', name: 'jena-arq', version: '3.7.0'
+    compile group: 'org.apache.jena', name: 'jena-core', version: '3.7.0'
+
+    compile group: 'org.jgrapht', name: 'jgrapht-core', version: '1.2.0'
+    compile group: 'jgrapht', name: 'jgrapht', version: '0.7.3'
+    compile group: 'jgraph', name: 'jgraph', version: '5.13.0.0'
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile group: 'edu.mit', name: 'jwi', version: '2.2.3'
+    //end from Link
+*/
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}
